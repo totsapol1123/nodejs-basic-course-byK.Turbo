@@ -15,7 +15,7 @@ const userDatabase = {
 app.get("/users/:userId", (req, res) => {
   const userId = req.params.userId;
   const name = userDatabase[userId];
-
+  
   if (!name) {
     res.send(`Error User ID ${userId} not found`);
     return;
@@ -24,6 +24,8 @@ app.get("/users/:userId", (req, res) => {
   // 1. Implement: returns JSON response
   res.send(`User ID: ${userId} (Name: ${name})`);
 });
+
+
 
 app.post("/users/:userId", (req, res) => {
   const userId = req.params.userId;
