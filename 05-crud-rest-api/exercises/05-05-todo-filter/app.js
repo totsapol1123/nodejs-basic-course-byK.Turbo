@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/todos", (req, res) => {
   const query = req.query;
+  console.log(Object.entries(query));
+
+
+
   const filters = Object.entries(query).map(([key, value]) => {
     switch (key) {
       // compare todo.id with the object's value based on the key
@@ -26,10 +30,13 @@ app.get("/todos", (req, res) => {
         return (todo) => {
           // Hint: use === to compare boolean values
           // This is a tricky one, because the query string is a string,
+          // value = "false"
+          return todo.isDone.toString() === value;
         };
       case "title":
         return (todo) => {
           // Hint: use includes() to check if the string includes the value
+          return value.includes(todo.title);
         };
       case "description":
         return (todo) => {

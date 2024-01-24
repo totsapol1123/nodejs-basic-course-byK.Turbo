@@ -1,5 +1,6 @@
 import express from "express";
 import { isValidName } from "./utils.js";
+import { middleware } from "./middlewares/middle.js";
 
 const app = express();
 const port = 8000;
@@ -14,6 +15,8 @@ const userDatabase = {
   21: "Mana",
   22: "Mano",
 };
+
+app.use(middleware());
 
 app.get("/users", (req, res) => {
   const users = Object.keys(userDatabase).map((id) => {

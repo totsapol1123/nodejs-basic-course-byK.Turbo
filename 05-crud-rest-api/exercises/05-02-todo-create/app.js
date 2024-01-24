@@ -29,13 +29,14 @@ app.post("/todos", (req, res) => {
 
   // Create a new todo using the `createTodo` function (imported from the model, line: 2)
   // const todo = ...
-
+  const todo = createTodo({ title , description, });
   // Return the newly created todo with a 201 status code
-  // res.status(201).json({
-  //   data: todo,
-  // });
+  //HTTPS Status created 201
+  res.status(201).json({
+    data: todo,
+  });
 
-  throw new Error("Not implemented");
+  // throw new Error("Not implemented");
 });
 
 app.listen(port, () => {
